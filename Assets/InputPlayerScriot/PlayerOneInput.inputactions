@@ -1,0 +1,74 @@
+{
+    "name": "PlayerOneInput",
+    "maps": [
+        {
+            "name": "PlayerOne",
+            "id": "18026cb4-a0e9-4864-b21c-aa14b4b7deea",
+            "actions": [
+                {
+                    "name": "VerlicalMovement",
+                    "type": "Value",
+                    "id": "b063a536-52aa-40c0-aa6f-eed202b3cfa5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RotationMovement",
+                    "type": "Button",
+                    "id": "2737af15-b3d4-49a7-8772-d7ec7a694ddc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "173c48b3-404f-446a-ad5f-24f4ebb20d9e",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerlicalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be3bf325-6fbd-43ce-8c67-3fbc1b6cf922",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerlicalMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4c18cc8-91e6-4ed7-b729-79b60f0edb21",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotationMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2b31888-f3a0-42a1-9465-18fe9677c221",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotationMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
