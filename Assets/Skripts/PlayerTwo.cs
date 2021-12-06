@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Skripts
 {
-    public class PlayerOne : MonoBehaviour
+    public class PlayerTwo : MonoBehaviour
     {
         [SerializeField] private float _speed;
         [SerializeField] private float _rotationspeed;
@@ -20,7 +20,7 @@ namespace Skripts
 
         void Fire()
         {
-            if (Input.GetButtonUp("FireProjectilePlayerOne"))
+            if (Input.GetKeyUp(KeyCode.Keypad0))
             {
                 Vector3 SpawnPoint = StartSpawn.transform.position;
                 Quaternion SpawmRotation = StartSpawn.transform.rotation;
@@ -37,19 +37,19 @@ namespace Skripts
         {
             Fire();
 
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.UpArrow))
             {
                 player.transform.position += player.transform.forward * _speed;
             }
-            if (Input.GetKey(KeyCode.S))
-            { 
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
                 player.transform.position -= player.transform.forward * _speed;
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 player.transform.Rotate(0, _rotationspeed, 0);
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 player.transform.Rotate(0, _rotationspeed * -1, 0);
             }
