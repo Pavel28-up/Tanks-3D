@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace Skripts
 {
@@ -10,6 +11,8 @@ namespace Skripts
         public GameObject player;
         public GameObject Projectile;
         public GameObject StartSpawn;
+        public GameObject _gun;
+
 
         private Rigidbody _rigidbody;
 
@@ -22,14 +25,39 @@ namespace Skripts
         {
             if (Input.GetButtonUp("FireProjectilePlayerOne"))
             {
-                Vector3 SpawnPoint = StartSpawn.transform.position;
-                Quaternion SpawmRotation = StartSpawn.transform.rotation;
-                GameObject ProjectileForFire = Instantiate(Projectile, SpawnPoint, SpawmRotation) as GameObject;
+                if (_gun) 
+                {
+                    Ray ray = new Ray(transform.position, transform.forward);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        GameObject hitObject = hit.transform.gameObject;
+                        ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
+                        if (target != null) 
+                        {
+                            target.ReactToHit();
+                            Vector3 SpawnPoint = StartSpawn.transform.position;
+                            Quaternion SpawmRotation = StartSpawn.transform.rotation;
+                            GameObject ProjectileForFire = Instantiate(Projectile, SpawnPoint, SpawmRotation) as GameObject;
 
-                Rigidbody Run = ProjectileForFire.GetComponent<Rigidbody>();
-                Run.AddForce(ProjectileForFire.transform.forward * 10, ForceMode.Impulse);
+                            Rigidbody Run = ProjectileForFire.GetComponent<Rigidbody>();
+                            Run.AddForce(ProjectileForFire.transform.forward * 10, ForceMode.Impulse);
 
-                Destroy(ProjectileForFire, 5);
+                            Destroy(ProjectileForFire, 5);
+                        }
+                        else
+                        {
+                            Vector3 SpawnPoint = StartSpawn.transform.position;
+                            Quaternion SpawmRotation = StartSpawn.transform.rotation;
+                            GameObject ProjectileForFire = Instantiate(Projectile, SpawnPoint, SpawmRotation) as GameObject;
+
+                            Rigidbody Run = ProjectileForFire.GetComponent<Rigidbody>();
+                            Run.AddForce(ProjectileForFire.transform.forward * 10, ForceMode.Impulse);
+
+                            Destroy(ProjectileForFire, 5);
+                        }
+                    }
+                }
             }
         }
 
