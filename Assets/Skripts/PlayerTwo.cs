@@ -11,7 +11,9 @@ namespace Skripts
         public GameObject Projectile;
         public GameObject StartSpawn;
 
-        private Rigidbody _rigidbody;
+        public Rigidbody _rigidbody;
+
+        public float vertical;
 
         private void Awake()
         {
@@ -39,19 +41,19 @@ namespace Skripts
 
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                player.transform.position += player.transform.forward * _speed;
+                _rigidbody.AddForce(transform.forward * _speed / Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                player.transform.position -= player.transform.forward * _speed;
+                _rigidbody.AddForce(transform.forward * _speed / Time.deltaTime * -1);
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                player.transform.Rotate(0, _rotationspeed, 0);
+                _rigidbody.transform.Rotate(0, _rotationspeed, 0);
             }
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                player.transform.Rotate(0, _rotationspeed * -1, 0);
+                _rigidbody.transform.Rotate(0, _rotationspeed * -1, 0);
             }
         }
     }

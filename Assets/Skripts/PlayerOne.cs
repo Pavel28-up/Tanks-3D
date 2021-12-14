@@ -11,7 +11,10 @@ namespace Skripts
         public GameObject Projectile;
         public GameObject StartSpawn;
 
-        private Rigidbody _rigidbody;
+        public Rigidbody _rigidbody;
+
+        public float vertical;
+        public float horizontal;
 
         private void Awake()
         {
@@ -37,22 +40,11 @@ namespace Skripts
         {
             Fire();
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                player.transform.position += player.transform.forward * _speed;
-            }
-            if (Input.GetKey(KeyCode.S))
-            { 
-                player.transform.position -= player.transform.forward * _speed;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                player.transform.Rotate(0, _rotationspeed, 0);
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                player.transform.Rotate(0, _rotationspeed * -1, 0);
-            }
+            vertical = Input.GetAxis("Vertical");
+            horizontal = Input.GetAxis("Horizontal");
+
+            _rigidbody.AddForce((transform.forward * vertical) * _speed / Time.deltaTime);
+            _rigidbody.transform.Rotate(0, horizontal * _rotationspeed, 0);
         }
     }
 }
