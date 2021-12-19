@@ -6,6 +6,11 @@ public class ReactiveTarget : MonoBehaviour
 {
     public void ReactToHit()
     {
+        WanderingAI benavior = GetComponent<WanderingAI>();
+        if (benavior != null)
+        {
+            benavior.SetAlive(false);
+        }
         StartCoroutine(Die());
     }
 

@@ -90,7 +90,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: acf9783999493844f9a9898c50d9bb38, type: 2}
+  - {fileID: 2100000, guid: cddbf3fc261eba346880201a8d74d8f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -185,7 +185,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: acf9783999493844f9a9898c50d9bb38, type: 2}
+  - {fileID: 2100000, guid: cddbf3fc261eba346880201a8d74d8f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 602031951378769999}
   - component: {fileID: -2957158404094528175}
   m_Layer: 0
-  m_Name: Mob
+  m_Name: Enemy 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,7 +286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: acf9783999493844f9a9898c50d9bb38, type: 2}
+  - {fileID: 2100000, guid: cddbf3fc261eba346880201a8d74d8f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -362,4 +362,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  obstacleRange: 5
+  obstacleRange: 2
+  _enemy1: 0
