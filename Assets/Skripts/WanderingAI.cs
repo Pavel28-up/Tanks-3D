@@ -6,7 +6,8 @@ public class WanderingAI : MonoBehaviour
     public float speed = 3f;
     public float obstacleRange = 0.01f;
     private bool _alive;
-    public int _enemy1;
+    public int life;
+    public int armor;
 
     void Start()
     {

@@ -363,4 +363,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   obstacleRange: 2
-  _enemy1: 0
+  life: 5
+  armor: 4

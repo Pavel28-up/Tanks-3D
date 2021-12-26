@@ -2677,12 +2677,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09242f555daf6e7458d35b3e1c388be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
-  prefabEnemy: []
+  prefabEnemy:
+  - {fileID: 8424232319750529447, guid: ceb65d61cd081ef40bfb30569cf7322c, type: 3}
+  - {fileID: 8424232319750529447, guid: 7cc80f0b5c58e7b46b02fd6100617825, type: 3}
+  - {fileID: 8424232319750529447, guid: 0a5f1e067725d76498d80ce7e541f11d, type: 3}
+  - {fileID: 8424232319750529447, guid: 0363ac2dcce52994b9fe35b1b3d61a68, type: 3}
   posX: -7
   posY: 0.61
   posZ: 8.85
-  enemy: 1
 --- !u!4 &1264413858
 Transform:
   m_ObjectHideFlags: 0
@@ -3041,12 +3043,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09242f555daf6e7458d35b3e1c388be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
-  prefabEnemy: []
+  prefabEnemy:
+  - {fileID: 8424232319750529447, guid: ceb65d61cd081ef40bfb30569cf7322c, type: 3}
+  - {fileID: 8424232319750529447, guid: 7cc80f0b5c58e7b46b02fd6100617825, type: 3}
+  - {fileID: 8424232319750529447, guid: 0a5f1e067725d76498d80ce7e541f11d, type: 3}
+  - {fileID: 8424232319750529447, guid: 0363ac2dcce52994b9fe35b1b3d61a68, type: 3}
   posX: 1
   posY: 0.61
   posZ: 8.85
-  enemy: 1
 --- !u!4 &1711128924
 Transform:
   m_ObjectHideFlags: 0
@@ -3185,12 +3189,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09242f555daf6e7458d35b3e1c388be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
-  prefabEnemy: []
+  prefabEnemy:
+  - {fileID: 8424232319750529447, guid: ceb65d61cd081ef40bfb30569cf7322c, type: 3}
+  - {fileID: 8424232319750529447, guid: 7cc80f0b5c58e7b46b02fd6100617825, type: 3}
+  - {fileID: 8424232319750529447, guid: 0a5f1e067725d76498d80ce7e541f11d, type: 3}
+  - {fileID: 8424232319750529447, guid: 0363ac2dcce52994b9fe35b1b3d61a68, type: 3}
   posX: 10
   posY: 0.61
   posZ: 8.85
-  enemy: 0
 --- !u!4 &1775082907
 Transform:
   m_ObjectHideFlags: 0
@@ -3916,6 +3922,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1314741113382898904, guid: 03fcf70cd53aeab4da1167907a9eaecc, type: 3}
+      propertyPath: enemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1314741113382898904, guid: 03fcf70cd53aeab4da1167907a9eaecc, type: 3}
       propertyPath: enemyPrefab
       value: 

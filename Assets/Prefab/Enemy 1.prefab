@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 5876682443624059434}
   - component: {fileID: 602031951378769999}
   - component: {fileID: -2957158404094528175}
+  - component: {fileID: -6509626522821597705}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -363,4 +364,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   obstacleRange: 2
-  _enemy1: 0
+  life: 2
+  armor: 1
+--- !u!114 &-6509626522821597705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424232319750529447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38f18fe1bb14ba45a47cb4305343b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
