@@ -6,22 +6,29 @@ namespace Skripts
     {
         [SerializeField] private float _speed;
         [SerializeField] private float _rotationspeed;
+        [SerializeField] private GameObject player;
+        [SerializeField] private GameObject Projectile;
+        [SerializeField] private GameObject StartSpawn;
 
-        public GameObject player;
-        public GameObject Projectile;
-        public GameObject StartSpawn;
-
-        public Rigidbody _rigidbody;
-
-        public float vertical;
-        public float horizontal;
+        private Rigidbody _rigidbody;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        void Fire()
+        private void Update()
+        {
+            Fire();
+
+            var vertical = Input.GetAxis("Vertical");
+            var horizontal = Input.GetAxis("Horizontal");
+
+            _rigidbody.AddForce((transform.forward * vertical) * _speed / Time.deltaTime);
+            _rigidbody.transform.Rotate(0, horizontal * _rotationspeed, 0);
+        }
+
+        public void Fire()
         {
             if (Input.GetButtonUp("FireProjectilePlayerOne"))
             {
@@ -36,15 +43,14 @@ namespace Skripts
             }
         }
 
-        private void Update()
+        public void TakeHPDamage()
         {
-            Fire();
+            Debug.Log("-1 HP");
+        }
 
-            vertical = Input.GetAxis("Vertical");
-            horizontal = Input.GetAxis("Horizontal");
-
-            _rigidbody.AddForce((transform.forward * vertical) * _speed / Time.deltaTime);
-            _rigidbody.transform.Rotate(0, horizontal * _rotationspeed, 0);
+        public void TakeArmorDamage()
+        {
+            Debug.Log("-1 Armor");
         }
     }
 }

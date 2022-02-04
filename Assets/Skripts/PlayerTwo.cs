@@ -6,33 +6,15 @@ namespace Skripts
     {
         [SerializeField] private float _speed;
         [SerializeField] private float _rotationspeed;
+        [SerializeField] private GameObject player;
+        [SerializeField] private GameObject Projectile;
+        [SerializeField] private GameObject StartSpawn;
 
-        public GameObject player;
-        public GameObject Projectile;
-        public GameObject StartSpawn;
-
-        public Rigidbody _rigidbody;
-
-        public float vertical;
+        private Rigidbody _rigidbody;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
-        }
-
-        void Fire()
-        {
-            if (Input.GetKeyUp(KeyCode.Keypad0))
-            {
-                Vector3 SpawnPoint = StartSpawn.transform.position;
-                Quaternion SpawmRotation = StartSpawn.transform.rotation;
-                GameObject ProjectileForFire = Instantiate(Projectile, SpawnPoint, SpawmRotation) as GameObject;
-
-                Rigidbody Run = ProjectileForFire.GetComponent<Rigidbody>();
-                Run.AddForce(ProjectileForFire.transform.forward * 10, ForceMode.Impulse);
-
-                Destroy(ProjectileForFire, 5);
-            }
         }
 
         private void Update()
@@ -54,6 +36,21 @@ namespace Skripts
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 _rigidbody.transform.Rotate(0, _rotationspeed * -1, 0);
+            }
+        }
+
+        void Fire()
+        {
+            if (Input.GetKeyUp(KeyCode.Keypad0))
+            {
+                Vector3 SpawnPoint = StartSpawn.transform.position;
+                Quaternion SpawmRotation = StartSpawn.transform.rotation;
+                GameObject ProjectileForFire = Instantiate(Projectile, SpawnPoint, SpawmRotation) as GameObject;
+
+                Rigidbody Run = ProjectileForFire.GetComponent<Rigidbody>();
+                Run.AddForce(ProjectileForFire.transform.forward * 10, ForceMode.Impulse);
+
+                Destroy(ProjectileForFire, 5);
             }
         }
     }
