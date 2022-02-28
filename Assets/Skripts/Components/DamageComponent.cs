@@ -14,5 +14,15 @@ namespace Skripts.Components
                 healthComponent.ApplyDamage(_damage);
             }
         }
+
+        public void ApplyDamageBuff(int _damageBuffValue)
+        {
+            _damage += _damageBuffValue;
+        }
+
+        public void DisabbleDamageBuff(int _usualDamage)
+        {
+            _damage = _usualDamage;
+        }
     }
 }

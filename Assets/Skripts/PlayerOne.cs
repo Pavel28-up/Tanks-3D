@@ -20,11 +20,14 @@ namespace Skripts
         private void Update()
         {
             Fire();
+        }
 
+        private void FixedUpdate()
+        {
             var vertical = Input.GetAxis("Vertical");
             var horizontal = Input.GetAxis("Horizontal");
 
-            _rigidbody.AddForce((transform.forward * vertical) * _speed / Time.deltaTime);
+            _rigidbody.AddForce((transform.forward * vertical) * _speed);
             _rigidbody.transform.Rotate(0, horizontal * _rotationspeed, 0);
         }
 

@@ -20,14 +20,17 @@ namespace Skripts
         private void Update()
         {
             Fire();
+        }
 
+        private void FixedUpdate()
+        {
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                _rigidbody.AddForce(transform.forward * _speed / Time.deltaTime);
+                _rigidbody.AddForce(transform.forward * _speed);
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                _rigidbody.AddForce(transform.forward * _speed / Time.deltaTime * -1);
+                _rigidbody.AddForce(transform.forward * _speed * -1);
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {

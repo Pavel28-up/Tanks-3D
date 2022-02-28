@@ -120,7 +120,7 @@ MonoBehaviour:
         m_MethodName: ApplyPlayerArmor
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1921992612132958407, guid: 1263d78ba9b925042a2f0031f13cbdfb, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
@@ -177,3 +177,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 8690714742775332770}
+  _objectToActive: {fileID: 0}

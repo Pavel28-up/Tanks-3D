@@ -10,27 +10,24 @@ namespace Skripts.Components
         [SerializeField] private UnityEvent _onHPDamage;
         [SerializeField] private UnityEvent _onArmorDamage;
         [SerializeField] private UnityEvent _onDie;
-        [SerializeField] private float _armorTimer;
 
-        private bool _checkArmorTimer = false;
+        private bool _checkArmor;
 
-        public void Update()
+        private void Update()
         {
-            if (_checkArmorTimer)
+            if (_armor > 0)
             {
-                _armorTimer -= Time.deltaTime;
+                _checkArmor = true;
             }
-
-            if (_armorTimer <= 0)
+            else if (_armor == 0)
             {
-                _health = 1;
-                _checkArmorTimer = false;
+                _checkArmor = false;
             }
         }
 
         public void ApplyDamage(int damageValue)
         {
-            if (_armor > 0)
+            if (_checkArmor)
             {
                 _armor -= damageValue;
                 _onArmorDamage?.Invoke();
@@ -52,15 +49,14 @@ namespace Skripts.Components
             _health += healValue;
         }
 
-        public void ApplyTimedArmor(int armorValue)
-        {
-            _checkArmorTimer = true;
-            _health += armorValue;
-        }
-
         public void ApplyPlayerArmor(int armorValue)
         {
             _armor += armorValue;
+        }
+
+        public void DisabbleArmorBuff(int _usualArmor)
+        {
+            _armor = _usualArmor;
         }
     }
 }
