@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 2623833231501410888}
   - component: {fileID: 2623833231501410889}
   - component: {fileID: 2623833231501410885}
-  - component: {fileID: 2623833231501410884}
-  - component: {fileID: 7172539885756646157}
   - component: {fileID: -4207478379055662734}
   - component: {fileID: 773391868}
+  - component: {fileID: 2623833231501410884}
   m_Layer: 0
   m_Name: Flag
   m_TagString: Player
@@ -135,61 +134,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2623833231501410884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2623833231501410894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7934ca876694084084d2f3a3ef2ac46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7172539885756646157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2623833231501410894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd9fe1890b238184da85356d7da3537a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageBuffTimer: 5
-  _onTimerStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -4207478379055662734}
-        m_TargetAssemblyTypeName: Skripts.Components.PlayerArmorComponent, Assembly-CSharp
-        m_MethodName: ApplyPlayerArmor
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2623833231501410894}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onTimerEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 773391868}
-        m_TargetAssemblyTypeName: Skripts.Components.RemoveArmorComponent, Assembly-CSharp
-        m_MethodName: DisabbleArmorBuff
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2623833231501410894}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &-4207478379055662734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,3 +160,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _usualArmor: 0
+--- !u!114 &2623833231501410884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623833231501410894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7934ca876694084084d2f3a3ef2ac46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Skripts.Components
 {
-    public class TimerComponent : MonoBehaviour
+    public class FlagTimerComponent : MonoBehaviour
     {
         [SerializeField] private float _damageBuffTimer;
         [SerializeField] private UnityEvent _onTimerStart;

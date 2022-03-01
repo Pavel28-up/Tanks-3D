@@ -32,13 +32,12 @@ namespace Skripts.Components
                 Random.Range(_spawnPoint.position.z - _volume.z, _spawnPoint.position.z + _volume.z));
 
                 _checkCollision = CheckSpawnPoint(_position);
-                Debug.Log(_checkCollision);
 
                 if (_checkCollision)
                 {
                     int _rand = Random.Range(0, _prefab.Length - 1);
                     GameObject _object = Instantiate(_prefab[_rand], _position, Quaternion.identity);
-                    Destroy(_object, 100);
+                    Destroy(_object, 15);
                     yield return new WaitForSeconds(_spawnDelay);
                 }
                 else
