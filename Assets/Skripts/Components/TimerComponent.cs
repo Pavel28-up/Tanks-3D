@@ -5,7 +5,7 @@ namespace Skripts.Components
 {
     public class TimerComponent : MonoBehaviour
     {
-        [SerializeField] private float _damageBuffTimer;
+        [SerializeField] private float _Timer;
         [SerializeField] private UnityEvent _onTimerStart;
         [SerializeField] private UnityEvent _onTimerEnd;
 
@@ -23,13 +23,13 @@ namespace Skripts.Components
 
             if (_startSecondEvent)
             {
-                _damageBuffTimer -= Time.deltaTime;
+                _Timer -= Time.deltaTime;
             }
 
-            if (_damageBuffTimer <= 0)
+            if (_Timer <= 0)
             {
                 _onTimerEnd?.Invoke();
-                _damageBuffTimer = 5f;
+                _Timer = 5f;
                 _startSecondEvent = false;
             }
 

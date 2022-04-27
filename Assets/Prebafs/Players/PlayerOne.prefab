@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 1921992610357280014}
   - component: {fileID: 1921992610357280009}
   - component: {fileID: 1921992610357280008}
-  - component: {fileID: 1921992610357280015}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Player
@@ -112,19 +111,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1921992610357280015
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921992610357280013}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1921992611720828690
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +122,6 @@ GameObject:
   - component: {fileID: 1921992611720828691}
   - component: {fileID: 1921992611720828686}
   - component: {fileID: 1921992611720828685}
-  - component: {fileID: 1921992611720828684}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -207,19 +192,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1921992611720828684
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921992611720828690}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1921992612132958407
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,9 +211,13 @@ GameObject:
   - component: {fileID: 54362892}
   - component: {fileID: 1921992612132958463}
   - component: {fileID: 9168319616213545697}
+  - component: {fileID: 977897799}
+  - component: {fileID: 977897800}
+  - component: {fileID: 1059896243}
+  - component: {fileID: 1059896244}
   m_Layer: 0
   m_Name: PlayerOne
-  m_TagString: Player
+  m_TagString: PlayerOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -339,7 +315,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &1921992612132958400
 MonoBehaviour:
@@ -354,10 +330,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 60
-  _rotationspeed: 2.5
+  _rotationspeed: 2
   player: {fileID: 1921992612132958407}
   Projectile: {fileID: 2903535195204954660, guid: 4c70acdf9a96e79498a090661af51ae0, type: 3}
   StartSpawn: {fileID: 1921992610083113676}
+  _life: 1
 --- !u!114 &1921992612132958462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 3
   _armor: 3
+  _damageValue: 1
   _onHPDamage:
     m_PersistentCalls:
       m_Calls:
@@ -429,16 +407,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9fe1890b238184da85356d7da3537a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageBuffTimer: 5
+  _Timer: 5
   _onTimerStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -8218739859249126775, guid: 4c70acdf9a96e79498a090661af51ae0, type: 3}
+      - m_Target: {fileID: 977897800}
         m_TargetAssemblyTypeName: Skripts.Components.DamageBuffComponent, Assembly-CSharp
-        m_MethodName: ApplyDamageBuff
+        m_MethodName: DamageBuff
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2903535195204954660, guid: 4c70acdf9a96e79498a090661af51ae0, type: 3}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -448,12 +426,12 @@ MonoBehaviour:
   _onTimerEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -5697732850393451889, guid: 4c70acdf9a96e79498a090661af51ae0, type: 3}
+      - m_Target: {fileID: 977897799}
         m_TargetAssemblyTypeName: Skripts.Components.RemoveDamageBuffComponent, Assembly-CSharp
-        m_MethodName: DisabbleDamageBuff
+        m_MethodName: RemoveDamageBuff
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2903535195204954660, guid: 4c70acdf9a96e79498a090661af51ae0, type: 3}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -472,13 +450,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5562a8ac2eb544c815970631ffc29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageBuffTimer: 5
+  _Timer: 5
   _onTimerStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Skripts.Components.PlayerArmorComponent, Assembly-CSharp
-        m_MethodName: ApplyPlayerArmor
+      - m_Target: {fileID: 1059896244}
+        m_TargetAssemblyTypeName: Skripts.Components.SetArmorComponent, Assembly-CSharp
+        m_MethodName: ApplyArmor
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -491,7 +469,7 @@ MonoBehaviour:
   _onTimerEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1059896243}
         m_TargetAssemblyTypeName: Skripts.Components.RemoveArmorComponent, Assembly-CSharp
         m_MethodName: DisabbleArmorBuff
         m_Mode: 2
@@ -533,3 +511,54 @@ MonoBehaviour:
   _prefab: {fileID: 0}
   _prefab1: {fileID: 0}
   _prefab2: {fileID: 0}
+--- !u!114 &977897799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921992612132958407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa32e4ad381a66479d378eb2d6e4b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &977897800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921992612132958407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f1b8536e062b147bc3cafb63bf463e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageBuff: 1
+--- !u!114 &1059896243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921992612132958407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883e67de47475c84cb492b877d818001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _usualArmor: 0
+--- !u!114 &1059896244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921992612132958407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e51112c69fadf34993d27de272c8139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _armor: 3

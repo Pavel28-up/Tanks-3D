@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 763948496111107325}
   - component: {fileID: 763948496111107322}
   - component: {fileID: 763948496111107323}
-  - component: {fileID: 763948496111107320}
   - component: {fileID: 763948496111107321}
   - component: {fileID: 763948496111107302}
+  - component: {fileID: 8655935450903917816}
   m_Layer: 0
   m_Name: HP
   m_TagString: Untagged
@@ -99,46 +99,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &763948496111107320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763948496111107303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8566d4080f3d9e648a71a3b7036398d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tag: Player
-  _action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 763948496111107321}
-        m_TargetAssemblyTypeName: Skripts.Components.HealComponent, Assembly-CSharp
-        m_MethodName: ApplyHeal
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 763948496111107302}
-        m_TargetAssemblyTypeName: Skripts.Components.DestroyObjectComponent, Assembly-CSharp
-        m_MethodName: DestroyObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &763948496111107321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +126,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 763948496111107303}
   _objectToActive: {fileID: 0}
+--- !u!114 &8655935450903917816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763948496111107303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8566d4080f3d9e648a71a3b7036398d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stages:
+  - _tag: PlayerOne
+    _action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 763948496111107321}
+          m_TargetAssemblyTypeName: Skripts.Components.HealComponent, Assembly-CSharp
+          m_MethodName: ApplyHeal
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 763948496111107302}
+          m_TargetAssemblyTypeName: Skripts.Components.DestroyObjectComponent, Assembly-CSharp
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _tag: PlayerTwo
+    _action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 763948496111107321}
+          m_TargetAssemblyTypeName: Skripts.Components.HealComponent, Assembly-CSharp
+          m_MethodName: ApplyHeal
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 763948496111107302}
+          m_TargetAssemblyTypeName: Skripts.Components.DestroyObjectComponent, Assembly-CSharp
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

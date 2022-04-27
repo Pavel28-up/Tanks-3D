@@ -7,36 +7,37 @@ namespace Skripts.Components
     {
         [SerializeField] private int _health;
         [SerializeField] private int _armor;
+
+        public int _damageValue;
+
         [SerializeField] private UnityEvent _onHPDamage;
         [SerializeField] private UnityEvent _onArmorDamage;
         [SerializeField] private UnityEvent _onDie;
 
-        private bool _checkArmor;
+        public bool _checkDamageBuff = false;
+        private bool _checkDamageFlag = false;
+        private bool _checkFlag = false;
 
-        private void Update()
+        public void ApplyDamage()
         {
-            if (_armor > 0)
-            {
-                _checkArmor = true;
-            }
-            else if (_armor == 0)
-            {
-                _checkArmor = false;
-            }
-        }
 
-        public void ApplyDamage(int damageValue)
-        {
-            if (_checkArmor)
+            if (_checkDamageBuff)
             {
-                _armor -= damageValue;
-                _onArmorDamage?.Invoke();
+                ApplyBuffDamage();
             }
-            else
+            if (!_checkDamageBuff)
             {
-                _health -= damageValue;
-                _onHPDamage?.Invoke();
-
+                if (_armor > 0)
+                {
+                    Debug.Log("tut");
+                    _armor -= _damageValue;
+                    _onArmorDamage?.Invoke();
+                }
+                else if (_armor == 0)
+                {
+                    _health -= _damageValue;
+                    _onHPDamage?.Invoke();
+                }
                 if (_health <= 0)
                 {
                     _onDie?.Invoke();
@@ -49,7 +50,7 @@ namespace Skripts.Components
             _health += healValue;
         }
 
-        public void ApplyPlayerArmor(int armorValue)
+        public void ApplyArmor(int armorValue)
         {
             _armor += armorValue;
         }
@@ -57,6 +58,51 @@ namespace Skripts.Components
         public void DisabbleArmorBuff(int _usualArmor)
         {
             _armor = _usualArmor;
+        }
+
+        public void DamageBuff()
+        {
+            Debug.Log("Buff");
+            _checkDamageBuff = true;
+        }
+
+        public void RemoveDamageBuff()
+        {
+            _damageValue -= 1;
+            _checkDamageBuff = false;
+        }
+
+        private void ApplyBuffDamage()
+        {
+            if (_armor == 0 && _checkDamageFlag)
+            {
+                _health -= _damageValue;
+            }
+            if (_armor == 1)
+            {
+                _armor -= 1;
+                _health -= 1;
+                _checkDamageFlag = true;
+            }
+            if (_armor == 2 && _checkFlag)
+            {
+                Debug.Log("tut");
+                _armor -= _damageValue;
+                _checkDamageFlag = true;
+                _checkFlag = false;
+                _onHPDamage?.Invoke();
+            }
+            if (_armor > 2)
+            {
+                _armor -= _damageValue;
+                _checkFlag = true;
+                _checkDamageFlag = false;
+                _onArmorDamage?.Invoke();
+            }
+            if (_health <= 0)
+            {
+                _onDie?.Invoke();
+            }
         }
     }
 }

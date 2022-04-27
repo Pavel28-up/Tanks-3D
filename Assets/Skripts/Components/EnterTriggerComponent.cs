@@ -6,21 +6,33 @@ namespace Skripts.Components
 {
     public class EnterTriggerComponent : MonoBehaviour
     {
-        [SerializeField] private string _tag;
-        [SerializeField] private UnityEvent<GameObject> _action;
+        [SerializeField] private TriggerStages[] _stages;
 
         public void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag(_tag))
+            foreach (var stage in _stages)
             {
-                _action?.Invoke(other.gameObject);
+                if (other.gameObject.CompareTag(stage.Tag))
+                {
+                    stage.Action?.Invoke(other.gameObject);
+                    return;
+                }
             }
         }
 
         [Serializable]
         public class EnterEvent : UnityEvent<GameObject>
         {
+        }
 
+        [Serializable]
+        public class TriggerStages
+        {
+            [SerializeField] private string _tag;
+            [SerializeField] private EnterEvent _action;
+
+            public string Tag => _tag;
+            public EnterEvent Action => _action;
         }
     }
 }

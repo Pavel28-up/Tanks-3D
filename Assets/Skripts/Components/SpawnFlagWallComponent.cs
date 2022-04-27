@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Skripts.Components
 {
-    public class FlagWallSpawnComponent : MonoBehaviour
+    public class SpawnFlagWallComponent : MonoBehaviour
     {
         public void Spawn(GameObject target)
         {

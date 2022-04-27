@@ -10,7 +10,11 @@ namespace Skripts
         [SerializeField] private GameObject Projectile;
         [SerializeField] private GameObject StartSpawn;
 
+        private float vertical;
+        private float horizontal;
         private Rigidbody _rigidbody;
+        [HideInInspector]
+        public bool _life = true;
 
         private void Awake()
         {
@@ -19,32 +23,21 @@ namespace Skripts
 
         private void Update()
         {
+            vertical = Input.GetAxis("VerticalTwo");
+            horizontal = Input.GetAxis("HorizontalTwo");
+
             Fire();
         }
 
         private void FixedUpdate()
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                _rigidbody.AddForce(transform.forward * _speed);
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                _rigidbody.AddForce(transform.forward * _speed * -1);
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                _rigidbody.transform.Rotate(0, _rotationspeed, 0);
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                _rigidbody.transform.Rotate(0, _rotationspeed * -1, 0);
-            }
+            _rigidbody.AddForce(vertical * _speed * transform.forward);
+            _rigidbody.transform.Rotate(0, horizontal * _rotationspeed, 0);
         }
 
-        void Fire()
+        public void Fire()
         {
-            if (Input.GetKeyUp(KeyCode.Keypad0))
+            if (Input.GetKeyDown(KeyCode.Keypad0))
             {
                 Vector3 SpawnPoint = StartSpawn.transform.position;
                 Quaternion SpawmRotation = StartSpawn.transform.rotation;
@@ -55,6 +48,22 @@ namespace Skripts
 
                 Destroy(ProjectileForFire, 5);
             }
+        }
+
+        public void TakeHPDamage()
+        {
+            Debug.Log("-1 HP");
+        }
+
+        public void TakeArmorDamage()
+        {
+            Debug.Log("-1 Armor");
+        }
+
+        public void OnDie()
+        {
+            _life = false;
+            Debug.Log("You Die");
         }
     }
 }

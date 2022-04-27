@@ -13,43 +13,41 @@ namespace Skripts.Components
         private Vector3 _sizeCollider = new Vector3(0.25f, 0.25f, 0.25f);
         private Collider[] _colliders;
         private bool _checkCollision;
+        private PlayerOne _playerOne;
 
-        private void Update()
+        public void Awake()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) StartCoroutine("SpawnField");
+            _playerOne = FindObjectOfType<PlayerOne>();
+            StartCoroutine(SpawnField());
         }
 
         private IEnumerator SpawnField()
         {
-            int _spawnCount = 400;
-
-            while (_spawnCount > 0)
+            while (_playerOne._life)
             {
-                _spawnCount--;
-
-                Vector3 _position = new Vector3(Random.Range(_spawnPoint.position.x - _volume.x, _spawnPoint.position.x + _volume.x),
+                Vector3 position = new Vector3(Random.Range(_spawnPoint.position.x - _volume.x, _spawnPoint.position.x + _volume.x),
                 _spawnPoint.position.y,
                 Random.Range(_spawnPoint.position.z - _volume.z, _spawnPoint.position.z + _volume.z));
 
-                _checkCollision = CheckSpawnPoint(_position);
+                _checkCollision = CheckSpawnPoint(position);
 
                 if (_checkCollision)
                 {
-                    int _rand = Random.Range(0, _prefab.Length - 1);
-                    GameObject _object = Instantiate(_prefab[_rand], _position, Quaternion.identity);
+                    int rand = Random.Range(0, _prefab.Length);
+                    GameObject _object = Instantiate(_prefab[rand], position, Quaternion.identity);
                     Destroy(_object, 15);
                     yield return new WaitForSeconds(_spawnDelay);
                 }
                 else
                 {
-                    SpawnField();
+                    yield return null;
                 }
             }
         }
 
-        private bool CheckSpawnPoint(Vector3 _position)
+        private bool CheckSpawnPoint(Vector3 position)
         {
-            _colliders = Physics.OverlapBox(_position, _sizeCollider);
+            _colliders = Physics.OverlapBox(position, _sizeCollider);
 
             if (_colliders.Length > 0)
             {

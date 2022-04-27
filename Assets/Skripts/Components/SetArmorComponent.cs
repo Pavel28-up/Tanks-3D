@@ -2,16 +2,16 @@ using UnityEngine;
 
 namespace Skripts.Components
 {
-    public class PlayerArmorComponent : MonoBehaviour
+    public class SetArmorComponent : MonoBehaviour
     {
         [SerializeField] private int _armor;
 
-        public void ApplyPlayerArmor(GameObject target)
+        public void ApplyArmor(GameObject target)
         {
             var healthComponent = target.GetComponent<HealthArmorComponent>();
             if (healthComponent != null)
             {
-                healthComponent.ApplyPlayerArmor(_armor);
+                healthComponent.ApplyArmor(_armor);
             }
         }
     }

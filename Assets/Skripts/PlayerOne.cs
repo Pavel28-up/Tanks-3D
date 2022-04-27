@@ -10,7 +10,11 @@ namespace Skripts
         [SerializeField] private GameObject Projectile;
         [SerializeField] private GameObject StartSpawn;
 
+        private float vertical;
+        private float horizontal;
         private Rigidbody _rigidbody;
+        [HideInInspector]
+        public bool _life = true;
 
         private void Awake()
         {
@@ -19,21 +23,21 @@ namespace Skripts
 
         private void Update()
         {
+            vertical = Input.GetAxis("Vertical");
+            horizontal = Input.GetAxis("Horizontal");
+
             Fire();
         }
 
         private void FixedUpdate()
         {
-            var vertical = Input.GetAxis("Vertical");
-            var horizontal = Input.GetAxis("Horizontal");
-
-            _rigidbody.AddForce((transform.forward * vertical) * _speed);
+            _rigidbody.AddForce(vertical * _speed * transform.forward);
             _rigidbody.transform.Rotate(0, horizontal * _rotationspeed, 0);
         }
 
         public void Fire()
         {
-            if (Input.GetButtonUp("FireProjectilePlayerOne"))
+            if (Input.GetButtonDown("FireProjectilePlayerOne"))
             {
                 Vector3 SpawnPoint = StartSpawn.transform.position;
                 Quaternion SpawmRotation = StartSpawn.transform.rotation;
@@ -54,6 +58,12 @@ namespace Skripts
         public void TakeArmorDamage()
         {
             Debug.Log("-1 Armor");
+        }
+
+        public void OnDie()
+        {
+             _life = false;
+            Debug.Log("You Die");
         }
     }
 }
